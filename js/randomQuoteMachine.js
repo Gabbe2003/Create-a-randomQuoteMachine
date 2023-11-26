@@ -1,7 +1,5 @@
-// Thanks to Useful Programmer Youtube channel
 window.onload = go;
 function go() {
-  // Triggers genRandQuote when New Quote button is clicked
   $("#new-quote").click(function() {
     genRandQuote();
   });
@@ -10,13 +8,11 @@ function go() {
     
   });
 
-  // Generate a random quote when window is loaded initially
   genRandQuote();
 }
 
-// Generates a random quote from the quote variable and renders it to DOM
 function genRandQuote() {
-  var quotes = [{
+  const quotes = [{
 		id: 1,
 		text: "I have just three things to teach: simplicity, patience, compassion. These three are your greatest treasures.",
 		source: "Lao Tzu"
@@ -367,22 +363,18 @@ function genRandQuote() {
 		source: "Mae West"
 	},
 ];
-  var randQuote = quotes[Math.floor(Math.random() * (quotes.length))];
+  let randQuote = quotes[Math.floor(Math.random() * (quotes.length))];
   $("#text").html(randQuote.text);
   $("#author").html(randQuote.source);
   $("#tweet-quote").attr("href", stringToClickToTweetURL('"' + randQuote.text + '" - ' + randQuote.source));
 }
 
 
-// This function makes strings into click to tweet URLS
 function stringToClickToTweetURL(str) {
   
-  // Convert to Click to Tweet URL
-  var stringToConvert = str.split(" ").join("%20").split("@").join("%40").split("!").join("%21");
+  let stringToConvert = str.split(" ").join("%20").split("@").join("%40").split("!").join("%21");
 
-  // Put 'Click to Tweet' URL suffix at the begining
-  var resultString = "https://twitter.com/intent/tweet?text=" + stringToConvert;
+  let resultString = "https://twitter.com/intent/tweet?text=" + stringToConvert;
 
-  // Return properly formatted "Click to Tweet URL"
   return resultString;
 }
